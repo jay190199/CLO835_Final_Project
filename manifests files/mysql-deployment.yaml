@@ -28,8 +28,13 @@ spec:
         - containerPort: 3306
         env:
           - name: DBPWD
-            value: "pw"
+            valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: password
           - name: DBUSER
-            value: "root"
+            secretKeyRef:
+              name:  mysql-secrets
+              key: user
           - name: MYSQL_ROOT_PASSWORD
             value: "pw"
